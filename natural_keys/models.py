@@ -1,5 +1,11 @@
 from django.db import models
 from functools import reduce
+from django.contrib.auth.models import User
+
+def mock_user(cls):
+    return 'username',
+
+setattr(User, 'get_natural_key_fields', classmethod(mock_user))
 
 
 class NaturalKeyModelManager(models.Manager):
